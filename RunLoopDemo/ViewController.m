@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "FN_Thread.h"
 
 @interface ViewController ()
+
+//@property (nonatomic, strong) FN_Thread *thread;
 
 @end
 
@@ -16,14 +19,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    /*
+    FN_Thread *thread = [[FN_Thread alloc] initWithBlock:^{
+        NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(timerMethod) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:5]];
+        NSLog(@"111");
+//        while (true) {
+//        }
+    }];
+    [thread start];
+//    _thread = thread;
+     */
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)timerMethod {
+    NSLog(@"222");
+    [NSThread sleepForTimeInterval:2.0];
+    static int a = 0;
+    a++;
+    NSLog(@"a=%zd",a);
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    NSLog(@"thread=%@",_thread);
+//    [_thread start];
+    
+    FN_Thread *thread = [[FN_Thread alloc] initWithBlock:^{
+        NSLog(@"touch");
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:5]];
+    }];
+    [thread start];
+    [self performSelector:@selector(performMethod) onThread:thread withObject:nil waitUntilDone:NO];
+}
+
+- (void)performMethod {
+    NSLog(@"performMethod");
+}
 
 @end

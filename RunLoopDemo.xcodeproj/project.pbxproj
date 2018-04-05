@@ -13,6 +13,7 @@
 		57E1CED6206E217F000D2356 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57E1CED5206E217F000D2356 /* Assets.xcassets */; };
 		57E1CED9206E217F000D2356 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57E1CED7206E217F000D2356 /* LaunchScreen.storyboard */; };
 		57E1CEDC206E217F000D2356 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E1CEDB206E217F000D2356 /* main.m */; };
+		733A677120711E06007DD082 /* FN_Thread.m in Sources */ = {isa = PBXBuildFile; fileRef = 733A677020711E06007DD082 /* FN_Thread.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		57E1CED8206E217F000D2356 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57E1CEDA206E217F000D2356 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57E1CEDB206E217F000D2356 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		733A676F20711E06007DD082 /* FN_Thread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FN_Thread.h; sourceTree = "<group>"; };
+		733A677020711E06007DD082 /* FN_Thread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FN_Thread.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,8 @@
 				57E1CECD206E217F000D2356 /* AppDelegate.m */,
 				57E1CECF206E217F000D2356 /* ViewController.h */,
 				57E1CED0206E217F000D2356 /* ViewController.m */,
+				733A676F20711E06007DD082 /* FN_Thread.h */,
+				733A677020711E06007DD082 /* FN_Thread.m */,
 				57E1CED2206E217F000D2356 /* Main.storyboard */,
 				57E1CED5206E217F000D2356 /* Assets.xcassets */,
 				57E1CED7206E217F000D2356 /* LaunchScreen.storyboard */,
@@ -143,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57E1CED1206E217F000D2356 /* ViewController.m in Sources */,
+				733A677120711E06007DD082 /* FN_Thread.m in Sources */,
 				57E1CEDC206E217F000D2356 /* main.m in Sources */,
 				57E1CECE206E217F000D2356 /* AppDelegate.m in Sources */,
 			);

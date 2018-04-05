@@ -10,4 +10,8 @@
 
 @implementation FN_Thread
 
+- (void)dealloc {
+    NSLog(@"线程挂了");
+}
+
 @end

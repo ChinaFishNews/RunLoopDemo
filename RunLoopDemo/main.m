@@ -11,6 +11,11 @@
 
 int main(int argc, char * argv[]) {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+//        NSLog(@"thread=%@",[NSThread currentThread]);
+//        NSLog(@"1111");
+//        int result = UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+//        NSLog(@"222");
+        UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+        return 111;
     }
 }
