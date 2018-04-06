@@ -11,6 +11,7 @@
 
 @interface ViewController ()
 
+@property (nonatomic, strong) dispatch_source_t timer;
 //@property (nonatomic, strong) FN_Thread *thread;
 
 @end
@@ -31,6 +32,9 @@
     [thread start];
 //    _thread = thread;
      */
+    
+    [self addOberser];
+    [self GCDTimer];
 }
 
 - (void)timerMethod {
@@ -55,6 +59,35 @@
 
 - (void)performMethod {
     NSLog(@"performMethod");
+}
+
+- (void)addOberser {
+    // 创建observer
+    CFRunLoopObserverRef observer = CFRunLoopObserverCreateWithHandler(CFAllocatorGetDefault(), kCFRunLoopAllActivities, YES, 0, ^(CFRunLoopObserverRef observer, CFRunLoopActivity activity) {
+        NSLog(@"activity = %zd", activity);
+    });
+    CFRunLoopAddObserver(CFRunLoopGetCurrent(), observer, kCFRunLoopDefaultMode);
+    CFRelease(observer);
+}
+
+int count = 0;
+- (void)GCDTimer {
+    // 获得队列
+    dispatch_queue_t queue = dispatch_get_main_queue(); // dispatch_get_global_queue(0, 0);
+    // 创建定时器
+    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    self.timer = timer;
+    dispatch_time_t start = dispatch_time(DISPATCH_TIME_NOW, 3.0 * NSEC_PER_SEC);
+    uint64_t interval = (uint64_t)(1.0 * NSEC_PER_SEC);
+    dispatch_source_set_timer(timer, start, interval, 0);
+    dispatch_source_set_event_handler(timer, ^{
+        NSLog(@"count=%zd",count);
+        count++;
+    });
+    // 启动定时器
+    dispatch_resume(timer);
+    // 取消定时器
+    //dispatch_cancel(self.timer);
 }
 
 @end
